@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://5ui2oke1jo6n"]
+
+[ext_resource type="Texture2D" uid="uid://brfkaaoety1xy" path="res://Ninja Adventure - Asset Pack/Actor/Characters/Boy/SpriteSheet.png" id="1_5sbcm"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t1jjr"]
+
+[node name="player" type="CharacterBody2D"]
+texture_filter = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_t1jjr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_5sbcm")
+hframes = 4
+vframes = 7
