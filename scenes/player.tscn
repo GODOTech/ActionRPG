@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://5ui2oke1jo6n"]
+[gd_scene load_steps=4 format=3 uid="uid://5ui2oke1jo6n"]
 
+[ext_resource type="Script" path="res://scenes/player.gd" id="1_3ct6q"]
 [ext_resource type="Texture2D" uid="uid://brfkaaoety1xy" path="res://Ninja Adventure - Asset Pack/Actor/Characters/Boy/SpriteSheet.png" id="1_5sbcm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t1jjr"]
 
 [node name="player" type="CharacterBody2D"]
 texture_filter = 1
+script = ExtResource("1_3ct6q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_t1jjr")
