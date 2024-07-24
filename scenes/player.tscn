@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_3ct6q"]
 [ext_resource type="Texture2D" uid="uid://brfkaaoety1xy" path="res://Ninja Adventure - Asset Pack/Actor/Characters/Boy/SpriteSheet.png" id="1_5sbcm"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_4o4el"]
-radius = 7.23551
+[sub_resource type="CircleShape2D" id="CircleShape2D_d3nbr"]
+radius = 3.0
 
 [sub_resource type="Animation" id="Animation_b2igu"]
 resource_name = "walkDown"
@@ -115,8 +115,7 @@ vframes = 7
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visibility_layer = 2
 position = Vector2(0, 6)
-scale = Vector2(1.05516, 0.346239)
-shape = SubResource("CircleShape2D_4o4el")
+shape = SubResource("CircleShape2D_d3nbr")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
