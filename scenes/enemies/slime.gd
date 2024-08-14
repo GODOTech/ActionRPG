@@ -1,6 +1,6 @@
 class_name  enemy
 extends CharacterBody2D
-@export var speed = 10
+@export var speed = 15
 @export var limit = 0.5
 @export var endPoint: Marker2D
 @onready var animation = $AnimatedSprite2D
@@ -28,7 +28,7 @@ func updateAnimation():
 		animationString = "walkDown"
 		
 	animation.play(animationString)
-func _physics_process(delta):
+func _physics_process(_delta):
 	updateVelocity()
 	move_and_slide()
 	updateAnimation()

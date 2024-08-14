@@ -62,7 +62,7 @@ ui_down={
 
 2d_render/layer_1="player"
 2d_render/layer_2="walls"
-2d_physics/layer_1="player"
+2d_physics/layer_1="playerFeet"
 2d_physics/layer_2="walls"
 2d_physics/layer_3="enemies"
 

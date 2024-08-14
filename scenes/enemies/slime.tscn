@@ -84,7 +84,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walkDown",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -101,7 +101,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walkLeft",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -118,7 +118,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walkRight",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -135,7 +135,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walkUp",
-"speed": 5.0
+"speed": 8.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_umvlc"]
@@ -151,7 +151,7 @@ script = ExtResource("1_4ww0n")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -4)
 sprite_frames = SubResource("SpriteFrames_auw5c")
-animation = &"walkUp"
+animation = &"walkDown"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)
