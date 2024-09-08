@@ -1998,6 +1998,7 @@ tilemap = NodePath("../../floor")
 
 [node name="slime" parent="." node_paths=PackedStringArray("endPoint") instance=ExtResource("7_eg7vk")]
 position = Vector2(156, 147)
+scale = Vector2(1.62037, 1.62037)
 endPoint = NodePath("Marker2D")
 
 [node name="Marker2D" type="Marker2D" parent="slime"]

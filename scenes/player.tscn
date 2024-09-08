@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://5ui2oke1jo6n"]
+[gd_scene load_steps=11 format=3 uid="uid://5ui2oke1jo6n"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_3ct6q"]
 [ext_resource type="Texture2D" uid="uid://brfkaaoety1xy" path="res://Ninja Adventure - Asset Pack/Actor/Characters/Boy/SpriteSheet.png" id="1_5sbcm"]
@@ -101,11 +101,14 @@ _data = {
 "walkUp": SubResource("Animation_02m3c")
 }
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bppnp"]
+radius = 6.0
+height = 18.0
+
 [node name="player" type="CharacterBody2D"]
 z_index = 1
-y_sort_enabled = true
 texture_filter = 1
-collision_mask = 2
+collision_mask = 6
 script = ExtResource("1_3ct6q")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -122,3 +125,10 @@ shape = SubResource("CircleShape2D_d3nbr")
 libraries = {
 "": SubResource("AnimationLibrary_uhp7f")
 }
+
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("CapsuleShape2D_bppnp")
+
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
