@@ -6,47 +6,6 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_umvlc"]
 radius = 5.0
 
-[sub_resource type="Animation" id="Animation_pn5ik"]
-resource_name = "WalkDown"
-length = 0.65
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.3, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 4, 8, 12]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("HitBox/CollisionShape2D:position")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.3, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(2.27374e-13, 5), Vector2(0, 1), Vector2(-1.38951e-12, 1), Vector2(1.86952e-13, 5)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("HitBox/CollisionShape2D:scale")
-tracks/2/interp = 0
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(1.00184, 0.952951), Vector2(1.52, 0.839999), Vector2(0.947682, 1.01958)]
-}
-
 [sub_resource type="Animation" id="Animation_o6p0s"]
 length = 0.001
 tracks/0/type = "value"
@@ -86,11 +45,10 @@ tracks/2/keys = {
 "values": [Vector2(6.82121e-13, -2)]
 }
 
-[sub_resource type="Animation" id="Animation_6532y"]
-resource_name = "WalkUp"
+[sub_resource type="Animation" id="Animation_pn5ik"]
+resource_name = "WalkDown"
 length = 0.65
 loop_mode = 1
-step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -98,10 +56,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [1, 5, 9, 13]
+"values": [0, 4, 8, 12]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -110,10 +68,10 @@ tracks/1/path = NodePath("HitBox/CollisionShape2D:position")
 tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(2.27374e-13, 5), Vector2(1.81899e-12, 1), Vector2(9.85286e-13, 2), Vector2(-1.33393e-12, 5)]
+"values": [Vector2(2.27374e-13, 5), Vector2(0, 1), Vector2(-1.38951e-12, 1), Vector2(1.86952e-13, 5)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -122,10 +80,10 @@ tracks/2/path = NodePath("HitBox/CollisionShape2D:scale")
 tracks/2/interp = 0
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(1.00184, 0.952951), Vector2(1.53248, 0.802912), Vector2(1.10676, 0.869596), Vector2(0.786603, 1.0002)]
+"values": [Vector2(1.00184, 0.952951), Vector2(1.52, 0.839999), Vector2(0.947682, 1.01958)]
 }
 
 [sub_resource type="Animation" id="Animation_xiu86"]
@@ -212,6 +170,48 @@ tracks/2/keys = {
 "values": [Vector2(1.00184, 0.952951), Vector2(1.53239, 0.769602), Vector2(1.44967, 0.894951), Vector2(0.821694, 0.947371)]
 }
 
+[sub_resource type="Animation" id="Animation_6532y"]
+resource_name = "WalkUp"
+length = 0.65
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [1, 5, 9, 13]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HitBox/CollisionShape2D:position")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(2.27374e-13, 5), Vector2(1.81899e-12, 1), Vector2(9.85286e-13, 2), Vector2(-1.33393e-12, 5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HitBox/CollisionShape2D:scale")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1.00184, 0.952951), Vector2(1.53248, 0.802912), Vector2(1.10676, 0.869596), Vector2(0.786603, 1.0002)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x8sbl"]
 _data = {
 "RESET": SubResource("Animation_o6p0s"),
@@ -233,6 +233,7 @@ script = ExtResource("1_4ww0n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5)
+scale = Vector2(0.67724, 0.67724)
 shape = SubResource("CircleShape2D_umvlc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -247,6 +248,7 @@ vframes = 4
 libraries = {
 "": SubResource("AnimationLibrary_x8sbl")
 }
+autoplay = "WalkDown"
 
 [node name="HitBox" type="Area2D" parent="."]
 
