@@ -1,49 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://va625s3i0g0q"]
+[gd_scene load_steps=10 format=3 uid="uid://va625s3i0g0q"]
 
 [ext_resource type="Script" path="res://scenes/enemies/slime.gd" id="1_4ww0n"]
 [ext_resource type="Texture2D" uid="uid://cjhuj46b8okae" path="res://Ninja Adventure - Asset Pack/Actor/Monsters/Slime2/Slime2.png" id="1_w6cb6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_umvlc"]
-radius = 5.0
-
-[sub_resource type="Animation" id="Animation_o6p0s"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("HitBox/CollisionShape2D:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1.52, 0.839999)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("HitBox/CollisionShape2D:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(6.82121e-13, -2)]
-}
+radius = 5.90633
 
 [sub_resource type="Animation" id="Animation_pn5ik"]
 resource_name = "WalkDown"
@@ -214,7 +175,6 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x8sbl"]
 _data = {
-"RESET": SubResource("Animation_o6p0s"),
 "WalkDown": SubResource("Animation_pn5ik"),
 "WalkLeft": SubResource("Animation_xiu86"),
 "WalkRight": SubResource("Animation_w7ymp"),
@@ -253,7 +213,7 @@ autoplay = "WalkDown"
 [node name="HitBox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(6.82121e-13, -2)
+position = Vector2(2.27374e-13, 5)
 rotation = 1.57079
-scale = Vector2(1.52, 0.839999)
+scale = Vector2(1.00184, 0.952951)
 shape = SubResource("CapsuleShape2D_g7qud")

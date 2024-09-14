@@ -101,9 +101,8 @@ _data = {
 "walkUp": SubResource("Animation_02m3c")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bppnp"]
-radius = 6.0
-height = 18.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_cm6d1"]
+radius = 5.0
 
 [node name="player" type="CharacterBody2D"]
 z_index = 1
@@ -130,6 +129,7 @@ libraries = {
 [node name="HitBox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-shape = SubResource("CapsuleShape2D_bppnp")
+position = Vector2(0, 5)
+shape = SubResource("CircleShape2D_cm6d1")
 
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
