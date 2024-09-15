@@ -13,6 +13,7 @@ signal healthChanged # nombre de la señal a emitir
 @onready var effects = $Effects
 @onready var hurtTimer = $hurtTimer
 
+var enemyCollitions = []
 var isHurt : bool = false
  
 func _ready():
@@ -46,20 +47,23 @@ func handleCollision() -> void:
 			else:
 				print("Collision at index ", i, " is null.")
 
+func hurtByEnemy(area):
+	currentHealth -= 1
+	if currentHealth < 0:
+		currentHealth = maxHealth 
+	healthChanged.emit(currentHealth) # emitir señal de que la salud cambio
+	isHurt = true
+	knockback(area.get_parent().velocity)
+	effects.play("hurtBlink")
+	hurtTimer.start()
+	await hurtTimer.timeout
+	effects.play("RESET")
+	isHurt = false
+
 func _on_hit_box_area_entered(area):
-	if isHurt: return # is esta en estado dañado vuelve sin hacer nada
+	#if isHurt: return # si esta en estado dañado vuelve sin hacer nada
 	if area.name == "HitBox":
-		currentHealth -= 1
-		if currentHealth < 0:
-			currentHealth = maxHealth 
-		healthChanged.emit(currentHealth) # emitir señal de que la salud cambio
-		isHurt = true
-		knockback(area.get_parent().velocity)
-		effects.play("hurtBlink")
-		hurtTimer.start()
-		await hurtTimer.timeout
-		effects.play("RESET")
-		isHurt = false
+		enemyCollitions.append(area)
 
 func knockback(enemyVelocity:Vector2):
 	var knockbackDirection = (enemyVelocity - velocity).normalized() * knockBackPower 
@@ -71,8 +75,19 @@ func knockback(enemyVelocity:Vector2):
 	print("Finish: X", int(position.x), ", Y", int(position.y))
 	print("")
 
+func _on_hit_box_area_exited(area):
+	enemyCollitions.erase(area)
+
 func _physics_process(_delta):
 	handleInput()
 	move_and_slide()
-	handleCollision()
 	update_animations()
+	checkHurt()
+	#handleCollision()
+	
+	
+	
+func checkHurt():
+	if !isHurt:
+		for enemyArea in enemyCollitions: #le pone el nombre de enemyArea a todos los elementos del array
+			hurtByEnemy(enemyArea)
