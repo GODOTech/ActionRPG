@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://mmk841h2q1ne"]
+[gd_scene load_steps=19 format=3 uid="uid://cvthisa1li8am"]
 
 [ext_resource type="PackedScene" uid="uid://5ui2oke1jo6n" path="res://scenes/player.tscn" id="1_eensc"]
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_x6sux"]
@@ -7,7 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://byiyshodii5f6" path="res://Ninja Adventure - Asset Pack/Backgrounds/Animated/Flower/SpriteSheet16x16.png" id="3_vsdo8"]
 [ext_resource type="Texture2D" uid="uid://bsea4mr2xk8u1" path="res://Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetNature.png" id="5_lpjih"]
 [ext_resource type="Script" path="res://scenes/followCam.gd" id="6_euiet"]
+[ext_resource type="PackedScene" uid="uid://darcihl3r4mer" path="res://scenes/medKit.tscn" id="6_g73p4"]
 [ext_resource type="PackedScene" uid="uid://va625s3i0g0q" path="res://scenes/enemies/slime.tscn" id="7_eg7vk"]
+[ext_resource type="PackedScene" uid="uid://b366mf21cy88q" path="res://scenes/sword.tscn" id="8_c5tjp"]
 [ext_resource type="PackedScene" uid="uid://crfjiqyh30tab" path="res://scenes/heartsContainer.tscn" id="8_lh3k8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fiyvh"]
@@ -1963,13 +1965,47 @@ texture = ExtResource("5_lpjih")
 24:15/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 24:15/0/physics_layer_0/angular_velocity = 0.0
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_ql8t5"]
+resource_name = "collectables"
+scenes/1/scene = ExtResource("6_g73p4")
+scenes/2/scene = ExtResource("8_c5tjp")
+
 [sub_resource type="TileSet" id="TileSet_jr6bq"]
 physics_layer_0/collision_layer = 2
 sources/0 = SubResource("TileSetAtlasSource_1xj23")
+sources/1 = SubResource("TileSetScenesCollectionSource_ql8t5")
 
 [node name="main" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_x6sux")
+
+[node name="slime" parent="." node_paths=PackedStringArray("endPoint") instance=ExtResource("7_eg7vk")]
+position = Vector2(227, 72)
+endPoint = NodePath("Marker2D")
+
+[node name="Marker2D" type="Marker2D" parent="slime"]
+position = Vector2(-53.6914, 53.0743)
+
+[node name="slime2" parent="." node_paths=PackedStringArray("endPoint") instance=ExtResource("7_eg7vk")]
+position = Vector2(248, 130)
+endPoint = NodePath("../slime/Marker2D")
+
+[node name="Marker2D" type="Marker2D" parent="slime2"]
+position = Vector2(-65.3333, 16)
+
+[node name="slime3" parent="." node_paths=PackedStringArray("endPoint") instance=ExtResource("7_eg7vk")]
+position = Vector2(149, 66)
+endPoint = NodePath("../slime/Marker2D")
+
+[node name="Marker2D" type="Marker2D" parent="slime3"]
+position = Vector2(12.6667, 48)
+
+[node name="slime4" parent="." node_paths=PackedStringArray("endPoint") instance=ExtResource("7_eg7vk")]
+position = Vector2(216, 172)
+endPoint = NodePath("../slime/Marker2D")
+
+[node name="Marker2D" type="Marker2D" parent="slime4"]
+position = Vector2(-58, -17.3333)
 
 [node name="floor" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_48luj")
@@ -1989,23 +2025,17 @@ layer_0/name = "nature"
 layer_0/y_sort_enabled = true
 layer_0/z_index = 1
 layer_0/tile_data = PackedInt32Array(327689, 393216, 8, 458757, 393216, 0, 196613, 196608, 18, 458761, 131072, 8, 327691, 262144, 8, 458763, 327680, 9, 327694, 0, 11, 458766, 1048576, 8, 393232, 1048576, 5, 458768, 1179648, 9, 655367, 1114112, 14, 589836, 1376256, 14, 589839, 983040, 16, 720909, 983040, 14, 720917, 1572864, 15)
+layer_1/name = "collectables"
+layer_1/tile_data = PackedInt32Array(786437, 1, 65536, 786439, 1, 131072)
 
 [node name="player" parent="." instance=ExtResource("1_eensc")]
-position = Vector2(121, 124)
+position = Vector2(147, 151)
 
 [node name="followCam" type="Camera2D" parent="player" node_paths=PackedStringArray("tilemap")]
 limit_left = 0
 limit_top = 0
 script = ExtResource("6_euiet")
 tilemap = NodePath("../../floor")
-
-[node name="slime" parent="." node_paths=PackedStringArray("endPoint") instance=ExtResource("7_eg7vk")]
-position = Vector2(167, 135)
-scale = Vector2(1.62037, 1.62037)
-endPoint = NodePath("Marker2D")
-
-[node name="Marker2D" type="Marker2D" parent="slime"]
-position = Vector2(-12.96, 36.4114)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

@@ -25,7 +25,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HitBox/CollisionShape2D:position")
+tracks/1/path = NodePath("hitBox/CollisionShape2D:position")
 tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -37,7 +37,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("HitBox/CollisionShape2D:scale")
+tracks/2/path = NodePath("hitBox/CollisionShape2D:scale")
 tracks/2/interp = 0
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -67,7 +67,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HitBox/CollisionShape2D:position")
+tracks/1/path = NodePath("hitBox/CollisionShape2D:position")
 tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -79,7 +79,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("HitBox/CollisionShape2D:scale")
+tracks/2/path = NodePath("hitBox/CollisionShape2D:scale")
 tracks/2/interp = 0
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -109,7 +109,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HitBox/CollisionShape2D:position")
+tracks/1/path = NodePath("hitBox/CollisionShape2D:position")
 tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -121,7 +121,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("HitBox/CollisionShape2D:scale")
+tracks/2/path = NodePath("hitBox/CollisionShape2D:scale")
 tracks/2/interp = 0
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -151,7 +151,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HitBox/CollisionShape2D:position")
+tracks/1/path = NodePath("hitBox/CollisionShape2D:position")
 tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -163,7 +163,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("HitBox/CollisionShape2D:scale")
+tracks/2/path = NodePath("hitBox/CollisionShape2D:scale")
 tracks/2/interp = 0
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -187,6 +187,7 @@ height = 16.0
 
 [node name="slime" type="CharacterBody2D"]
 z_index = 1
+scale = Vector2(1.5, 1.5)
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_4ww0n")
@@ -210,9 +211,9 @@ libraries = {
 }
 autoplay = "WalkDown"
 
-[node name="HitBox" type="Area2D" parent="."]
+[node name="hitBox" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitBox"]
 position = Vector2(2.27374e-13, 5)
 rotation = 1.57079
 scale = Vector2(1.00184, 0.952951)

@@ -8,12 +8,13 @@ signal healthChanged # nombre de la señal a emitir
 
 @export var maxHealth : int = 3
 @onready var currentHealth : int = maxHealth
+@onready var hitBox = $HitBox
 
 @export var knockBackPower : int = 600
 @onready var effects = $Effects
 @onready var hurtTimer = $hurtTimer
 
-var enemyCollitions = []
+
 var isHurt : bool = false
  
 func _ready():
@@ -61,9 +62,11 @@ func hurtByEnemy(area):
 	isHurt = false
 
 func _on_hit_box_area_entered(area):
-	#if isHurt: return # si esta en estado dañado vuelve sin hacer nada
-	if area.name == "HitBox":
-		enemyCollitions.append(area)
+	if area.has_method("collect"):
+		area.collect()
+	##if isHurt: return # si esta en estado dañado vuelve sin hacer nada
+	#if area.name == "HitBox":
+		#enemyCollitions.append(area)
 
 func knockback(enemyVelocity:Vector2):
 	var knockbackDirection = (enemyVelocity - velocity).normalized() * knockBackPower 
@@ -75,8 +78,8 @@ func knockback(enemyVelocity:Vector2):
 	print("Finish: X", int(position.x), ", Y", int(position.y))
 	print("")
 
-func _on_hit_box_area_exited(area):
-	enemyCollitions.erase(area)
+func _on_hit_box_area_exited(area):pass
+	#enemyCollitions.erase(area)
 
 func _physics_process(_delta):
 	handleInput()
@@ -89,5 +92,6 @@ func _physics_process(_delta):
 	
 func checkHurt():
 	if !isHurt:
-		for enemyArea in enemyCollitions: #le pone el nombre de enemyArea a todos los elementos del array
-			hurtByEnemy(enemyArea)
+		for area in hitBox.get_overlapping_areas(): #le pone el nombre de enemyArea a todos los elementos del array
+			if area.name =="hitBox":
+				hurtByEnemy(area)
