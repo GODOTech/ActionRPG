@@ -4,11 +4,20 @@ signal healthChanged # nombre de la señal a emitir
 
 @export var speed: int = 65
 @onready var animations = $AnimationPlayer
+@onready var collisionTimer = $CollisionShape2D/collisionTimer
 
 @export var maxHealth : int = 3
 @onready var currentHealth : int = maxHealth
 
 @export var knockBackPower : int = 600
+@onready var effects = $Effects
+@onready var hurtTimer = $hurtTimer
+
+var isHurt : bool = false
+ 
+func _ready():
+	effects.play("RESET")
+
 func handleInput():
 	var moveDirection = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	velocity = moveDirection * speed
@@ -32,25 +41,31 @@ func handleCollision() -> void:
 			if collision != null:# Check if the collision is valid before accessing it
 				var _collider = collision.get_collider()
 				print("I collided with ", _collider.name)
-				await get_tree().create_timer(1.0,1,0,1).timeout
+				collisionTimer.start()
+				await collisionTimer.timeout
 			else:
 				print("Collision at index ", i, " is null.")
 
 func _on_hit_box_area_entered(area):
+	if isHurt: return # is esta en estado dañado vuelve sin hacer nada
 	if area.name == "HitBox":
 		currentHealth -= 1
 		if currentHealth < 0:
 			currentHealth = maxHealth 
 		healthChanged.emit(currentHealth) # emitir señal de que la salud cambio
-		
-		
-		knockback(area.get_parent().velocity) #HAhAhahaAHAHAHAHAHAHahhahaha
+		isHurt = true
+		knockback(area.get_parent().velocity)
+		effects.play("hurtBlink")
+		hurtTimer.start()
+		await hurtTimer.timeout
+		effects.play("RESET")
+		isHurt = false
 
 func knockback(enemyVelocity:Vector2):
 	var knockbackDirection = (enemyVelocity - velocity).normalized() * knockBackPower 
 	velocity = knockbackDirection
 	print("-------¡HIT!-------")
-	print("Velocity: ", int(velocity.length()))  
+	#print("Velocity: ", int(velocity.length()))  
 	print("Start: X", int(position.x), ", Y", int(position.y))
 	move_and_slide()
 	print("Finish: X", int(position.x), ", Y", int(position.y))
@@ -59,5 +74,5 @@ func knockback(enemyVelocity:Vector2):
 func _physics_process(_delta):
 	handleInput()
 	move_and_slide()
-	#handleCollision()
+	handleCollision()
 	update_animations()

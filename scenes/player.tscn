@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://5ui2oke1jo6n"]
+[gd_scene load_steps=14 format=3 uid="uid://5ui2oke1jo6n"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_3ct6q"]
 [ext_resource type="Texture2D" uid="uid://brfkaaoety1xy" path="res://Ninja Adventure - Asset Pack/Actor/Characters/Boy/SpriteSheet.png" id="1_5sbcm"]
@@ -102,7 +102,46 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cm6d1"]
-radius = 5.0
+radius = 4.0
+
+[sub_resource type="Animation" id="Animation_vmxf1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2ejv0"]
+resource_name = "hurtBlink"
+length = 0.4
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.73, 0, 0, 0.776471), Color(1, 1, 1, 0.776471)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ip0nr"]
+_data = {
+"RESET": SubResource("Animation_vmxf1"),
+"hurtBlink": SubResource("Animation_2ejv0")
+}
 
 [node name="player" type="CharacterBody2D"]
 z_index = 1
@@ -112,14 +151,32 @@ script = ExtResource("1_3ct6q")
 maxHealth = 6
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+clip_children = 2
 texture = ExtResource("1_5sbcm")
 hframes = 4
 vframes = 7
+
+[node name="ColorRect" type="ColorRect" parent="Sprite2D"]
+modulate = Color(1, 1, 1, 0)
+clip_children = 2
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -22.0
+offset_top = -24.0
+offset_right = -9.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visibility_layer = 2
 position = Vector2(0, 6)
 shape = SubResource("CircleShape2D_d3nbr")
+
+[node name="collisionTimer" type="Timer" parent="CollisionShape2D"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -129,7 +186,16 @@ libraries = {
 [node name="HitBox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(0, 5)
+position = Vector2(0, 6)
 shape = SubResource("CircleShape2D_cm6d1")
+
+[node name="Effects" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ip0nr")
+}
+
+[node name="hurtTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
 
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]

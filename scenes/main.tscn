@@ -1970,7 +1970,6 @@ sources/0 = SubResource("TileSetAtlasSource_1xj23")
 [node name="main" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_x6sux")
-metadata/_edit_vertical_guides_ = [156.0]
 
 [node name="floor" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_48luj")
@@ -1997,7 +1996,6 @@ position = Vector2(121, 124)
 [node name="followCam" type="Camera2D" parent="player" node_paths=PackedStringArray("tilemap")]
 limit_left = 0
 limit_top = 0
-position_smoothing_enabled = true
 script = ExtResource("6_euiet")
 tilemap = NodePath("../../floor")
 
