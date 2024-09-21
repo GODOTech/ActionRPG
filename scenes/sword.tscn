@@ -44,13 +44,13 @@ _data = {
 
 [node name="sword" instance=ExtResource("1_b3jce")]
 z_index = 1
+position = Vector2(2.79397e-09, -6)
 rotation = 9.42963
 scale = Vector2(0.479247, 0.99985)
 script = ExtResource("2_7ynf2")
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2(-0.0809987, -8.00111)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_jhw3t")
 
 [node name="Sprite2D" parent="." index="1"]

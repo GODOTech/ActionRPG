@@ -78,7 +78,7 @@ func knockback(enemyVelocity:Vector2):
 	print("Finish: X", int(position.x), ", Y", int(position.y))
 	print("")
 
-func _on_hit_box_area_exited(area):pass
+func _on_hit_box_area_exited(_area):pass
 	#enemyCollitions.erase(area)
 
 func _physics_process(_delta):

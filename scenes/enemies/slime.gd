@@ -1,16 +1,26 @@
-class_name  enemy
+class_name Enemy
 extends CharacterBody2D
+
 @export var speed = 15
 @export var limit = 0.5
-@export var endPoint: Marker2D
 @onready var animations = $AnimationPlayer
 
 var startPosition
 var endPosition
+var endPoint: Marker2D  # Declare the variable without export
 
 func _ready():
-	startPosition = position
-	endPosition = endPoint.global_position
+	# Initialize endPoint by finding the first child of type Marker2D
+	for child in get_children():
+		if child is Marker2D:
+			endPoint = child
+			break  # Exit the loop after finding the first Marker2D
+
+	if endPoint:
+		startPosition = position
+		endPosition = endPoint.global_position
+	else:
+		print("No Marker2D found in the enemy instance!")
 
 func changeDirection():
 	var tempEnd = endPosition
@@ -38,3 +48,4 @@ func _physics_process(_delta):
 	updateVelocity()
 	move_and_slide()
 	update_animations()
+

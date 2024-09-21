@@ -1,15 +1,8 @@
 extends "res://scenes/Collectable.gd"
 
 @onready var animation = $AnimationPlayer
-#func collect():
-	#animation.play("pickup")
-	#await animation.animation_finished
-	#super() # llama a collect en el script base
-
-
-
-
 @onready var player = get_tree().get_root().get_node("main/player") # Adjust path based on your scene hierarchy
+
 var is_collecting = false
 
 func collect():

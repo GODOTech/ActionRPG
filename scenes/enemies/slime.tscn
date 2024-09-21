@@ -198,7 +198,7 @@ scale = Vector2(0.67724, 0.67724)
 shape = SubResource("CircleShape2D_umvlc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.713726)
+modulate = Color(1, 1, 1, 0.458824)
 visibility_layer = 4
 position = Vector2(0, 2)
 texture = ExtResource("1_w6cb6")

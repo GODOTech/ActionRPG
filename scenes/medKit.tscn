@@ -6,7 +6,7 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1mo4b"]
 resource_local_to_scene = true
-size = Vector2(4, 8)
+size = Vector2(10, 2)
 
 [sub_resource type="Animation" id="Animation_a44xt"]
 resource_name = "pickup"
