@@ -14,7 +14,8 @@ signal healthChanged # nombre de la señal a emitir
 @onready var effects = $Effects
 @onready var hurtTimer = $hurtTimer
 
-
+@export var inventory = Inventory
+ 
 var isHurt : bool = false
  
 func _ready():

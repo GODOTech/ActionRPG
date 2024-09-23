@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://5ui2oke1jo6n"]
+[gd_scene load_steps=15 format=3 uid="uid://5ui2oke1jo6n"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_3ct6q"]
 [ext_resource type="Texture2D" uid="uid://brfkaaoety1xy" path="res://Ninja Adventure - Asset Pack/Actor/Characters/Boy/SpriteSheet.png" id="1_5sbcm"]
+[ext_resource type="Resource" uid="uid://dtbvk6n0nxy2m" path="res://inventory/player_inventory.tres" id="2_vpwct"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d3nbr"]
 radius = 3.0
@@ -159,6 +160,7 @@ texture_filter = 1
 collision_mask = 2
 script = ExtResource("1_3ct6q")
 maxHealth = 6
+inventory = ExtResource("2_vpwct")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 clip_children = 2
