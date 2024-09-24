@@ -18,9 +18,9 @@ func _ready():
 # This defines a function named 'update' to refresh the inventory slots with the items from the inventory.
 func update():  
 # Loops through the range of the smaller size between the inventory items array and the slots array to avoid index out-of-bounds errors.
-	for i in range(min(inventory.items.size(), slots.size())):  
+	for i in range(min(inventory.slots.size(), slots.size())):  
 # Calls the update method on each slot, passing the corresponding inventory item to update the visual representation of that slot.
-		slots[i].update(inventory.items[i])  
+		slots[i].update(inventory.slots[i])  
 
 func open():  
 	visible = true  

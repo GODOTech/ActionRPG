@@ -5,7 +5,8 @@ extends "res://scenes/Collectable.gd"
 
 var is_collecting = false
 
-func collect(inventory):
+func collect(inventory: Inventory):
+	if is_collecting:return
 	is_collecting = true
 	animation.play("pickup")
 	await animation.animation_finished

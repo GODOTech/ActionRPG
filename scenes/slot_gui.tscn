@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dasfy6t6js8v3"]
+[gd_scene load_steps=4 format=3 uid="uid://dasfy6t6js8v3"]
 
 [ext_resource type="Texture2D" uid="uid://cdiccqreih8ga" path="res://Ninja Adventure - Asset Pack/Inventory/inventorySlot.png" id="1_gep7p"]
 [ext_resource type="Script" path="res://scenes/slot_gui.gd" id="1_ibgo6"]
+[ext_resource type="FontFile" uid="uid://b2agloofat06a" path="res://Ninja Adventure - Asset Pack/Ui/Font/NormalFont.ttf" id="3_7x4wd"]
 
 [node name="Slot" type="Panel"]
 self_modulate = Color(1, 1, 1, 0)
@@ -25,3 +26,17 @@ offset_bottom = 20.0
 layout_mode = 2
 
 [node name="item" type="Sprite2D" parent="CenterContainer/Panel"]
+
+[node name="Label" type="Label" parent="CenterContainer/Panel"]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 0
+offset_left = -2.0
+offset_top = -1.0
+offset_right = 10.0
+offset_bottom = 11.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_7x4wd")
+theme_override_font_sizes/font_size = 8
+text = "99"
+horizontal_alignment = 2
