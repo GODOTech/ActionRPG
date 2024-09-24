@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://darcihl3r4mer"]
+[gd_scene load_steps=8 format=3 uid="uid://darcihl3r4mer"]
 
 [ext_resource type="PackedScene" uid="uid://dhj2p8vbn6c1" path="res://scenes/collectable.tscn" id="1_uxp0r"]
 [ext_resource type="Texture2D" uid="uid://bafgiwkes1n1" path="res://Ninja Adventure - Asset Pack/Items/Potion/Medipack.png" id="2_byxdj"]
 [ext_resource type="Script" path="res://scenes/medKit.gd" id="2_p1kh5"]
+[ext_resource type="Resource" uid="uid://ohb2oaqddkk8" path="res://inventory/medkit.tres" id="3_5vc4u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1mo4b"]
 resource_local_to_scene = true
@@ -44,6 +45,7 @@ _data = {
 [node name="medKit" instance=ExtResource("1_uxp0r")]
 z_index = 1
 script = ExtResource("2_p1kh5")
+itemRes = ExtResource("3_5vc4u")
 
 [node name="CollisionShape2D" parent="." index="0"]
 shape = SubResource("RectangleShape2D_1mo4b")

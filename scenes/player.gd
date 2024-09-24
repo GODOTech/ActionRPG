@@ -64,7 +64,7 @@ func hurtByEnemy(area):
 
 func _on_hit_box_area_entered(area):
 	if area.has_method("collect"):
-		area.collect()
+		area.collect(inventory)
 	##if isHurt: return # si esta en estado dañado vuelve sin hacer nada
 	#if area.name == "HitBox":
 		#enemyCollitions.append(area)

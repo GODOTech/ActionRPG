@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://b366mf21cy88q"]
+[gd_scene load_steps=8 format=3 uid="uid://b366mf21cy88q"]
 
 [ext_resource type="PackedScene" uid="uid://dhj2p8vbn6c1" path="res://scenes/collectable.tscn" id="1_b3jce"]
 [ext_resource type="Script" path="res://scenes/sword.gd" id="2_7ynf2"]
 [ext_resource type="Texture2D" uid="uid://4gfujjkra3rj" path="res://Ninja Adventure - Asset Pack/Items/Weapons/BigSword/Sprite.png" id="2_p3k6h"]
+[ext_resource type="Resource" uid="uid://b1ovwrk7f12fi" path="res://inventory/sword.tres" id="3_c0o0q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jhw3t"]
 resource_local_to_scene = true
@@ -48,6 +49,7 @@ position = Vector2(2.79397e-09, -6)
 rotation = 9.42963
 scale = Vector2(0.479247, 0.99985)
 script = ExtResource("2_7ynf2")
+itemRes = ExtResource("3_c0o0q")
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2(-0.0809987, -8.00111)

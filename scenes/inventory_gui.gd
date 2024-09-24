@@ -12,6 +12,7 @@ var isOpen: bool = false
 @onready var slots : Array = $NinePatchRect/GridContainer.get_children()  
 
 func _ready():
+	inventory.updated.connect(update)
 	update()  
 
 # This defines a function named 'update' to refresh the inventory slots with the items from the inventory.
