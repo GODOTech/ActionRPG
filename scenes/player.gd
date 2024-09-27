@@ -13,19 +13,36 @@ signal healthChanged # nombre de la señal a emitir
 @export var knockBackPower : int = 600
 @onready var effects = $Effects
 @onready var hurtTimer = $hurtTimer
+@onready var weapon = $weapon
 
 @export var inventory = Inventory
  
+var lastAnimDirection: String = "Down"
 var isHurt : bool = false
- 
+var isAttacking: bool = false 
+
 func _ready():
 	effects.play("RESET")
+	weapon.visible = false
 
 func handleInput():
 	var moveDirection = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	velocity = moveDirection * speed
+	
+	if Input.is_action_pressed("attack"):
+		attack()
+
+func attack():
+	animations.play("attack" + lastAnimDirection)
+	isAttacking = true
+	weapon.visible = true
+	await animations.animation_finished
+	weapon.visible = false
+	isAttacking = false
+	
 
 func update_animations():
+	if isAttacking : return
 	if velocity.length() == 0 and animations.is_playing():
 		animations.stop()
 	else:
@@ -35,6 +52,7 @@ func update_animations():
 		elif velocity.y < 0: direction = "Up"
 		elif velocity.y > 0: direction = "Down"
 		animations.play("walk" + direction)
+		lastAnimDirection = direction
 
 func handleCollision() -> void:
 	var slide_collision_count = get_slide_collision_count()
