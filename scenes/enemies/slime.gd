@@ -8,6 +8,8 @@ extends CharacterBody2D
 var startPosition
 var endPosition
 var endPoint: Marker2D  # Declare the variable without export
+var isDead: bool = false
+
 
 func _ready():
 	# Initialize endPoint by finding the first child of type Marker2D
@@ -45,7 +47,19 @@ func update_animations():
 		animations.play("Walk" + direction)
 
 func _physics_process(_delta):
+	if isDead: return
+	
 	updateVelocity()
 	move_and_slide()
 	update_animations()
 
+
+
+func _on_hurt_box_area_entered(area):
+	if area == $hitBox: return
+	$hitBox.set_deferred("monitorable", false)
+	isDead = true # orden importante
+	animations.play("death")
+	await animations.animation_finished
+	print("slime hit!!")
+	queue_free()

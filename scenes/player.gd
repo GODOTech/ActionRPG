@@ -35,9 +35,9 @@ func handleInput():
 func attack():
 	animations.play("attack" + lastAnimDirection)
 	isAttacking = true
-	weapon.visible = true
+	weapon.enable()
 	await animations.animation_finished
-	weapon.visible = false
+	weapon.disable()
 	isAttacking = false
 	
 
